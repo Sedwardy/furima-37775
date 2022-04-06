@@ -1,16 +1,16 @@
 <mxfile host="65bd71144e">
     <diagram id="_c77u8MzGn7pUaxRcE00" name="ページ1">
-        <mxGraphModel dx="1175" dy="901" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="795" dy="897" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="&lt;font style=&quot;font-size: 20px&quot;&gt;商品情報&lt;br&gt;user&lt;br&gt;goods_name&lt;br&gt;price&lt;br&gt;exhibitor&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 19px&quot;&gt;商品情報&lt;br&gt;user&lt;br&gt;goods_name&lt;br&gt;price&lt;br&gt;exhibitor_id&lt;br&gt;explain&lt;br&gt;category_id&lt;br&gt;condition_id&lt;br&gt;image&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="440" y="280" width="240" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="&lt;font style=&quot;font-size: 20px&quot;&gt;ユーザー情報&lt;br&gt;name&lt;br&gt;email&lt;br&gt;encrypted_password&lt;br&gt;profile&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="3" value="&lt;font style=&quot;font-size: 19px&quot;&gt;ユーザー情報&lt;br&gt;name&lt;br&gt;zenkaku name&lt;br&gt;hankaku name&lt;br&gt;email&lt;br&gt;encrypted_password&lt;br&gt;profile&lt;br&gt;date of birth&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="280" width="240" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="&lt;font style=&quot;font-size: 20px&quot;&gt;発送先情報&lt;br&gt;user&lt;br&gt;price&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="4" value="&lt;font style=&quot;font-size: 19px&quot;&gt;発送先情報&lt;br&gt;user&lt;br&gt;delivery fee&lt;br&gt;prefecture&lt;br&gt;city&lt;br&gt;street&lt;br&gt;building name&lt;br&gt;phone number&lt;br&gt;date of shipping&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="440" y="560" width="240" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="5" target="3" edge="1">
@@ -54,7 +54,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="5" value="&lt;font style=&quot;font-size: 20px&quot;&gt;購入履歴&lt;br&gt;user&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="5" value="&lt;font style=&quot;font-size: 19px&quot;&gt;購入履歴&lt;br&gt;user&lt;br&gt;postcode&lt;br&gt;prefecture_id&lt;br&gt;city&lt;br&gt;street&lt;br&gt;building name&lt;br&gt;phone number&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="120" y="560" width="240" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="2">
