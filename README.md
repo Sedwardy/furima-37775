@@ -30,30 +30,33 @@ Things you may want to cover:
 ## Usersテーブル
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
-|      nickname      |  string  | null: false |
-|   zennkaku name    |  string  | null: false |
-|   hankaku name     |  string  | null: false |
+|     nickname       |  string  | null: false |
+|    last_name       |  string  | null: false |
+|    first_name      |  string  | null: false |
+| hurigana_last_name |  string  | null: false |
+| hurigana_first_name|  string  | null: false |
 |      email         |  string  | null: false,unique:true |
 | encrypted_password |  string  | null: false |
-|      profile       |   text   | null: false |
-|   date of birth    |   date   | null: false |
+|   date_of_birth    |   date   | null: false |
 
 ### Association
 - has_many :merchandises
-- has many :purchases
+- has_many :purchases
 
 
 ## Merchandisesテーブル
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
 |      user          |references| null: false,foreign_key: true |
-|     goods_name     |  string  | null: false,foreign_key: true |
-|       price        | integer  | null: false,foreign_key: true |
-|    exhibitor_id    | integer  | null: false |
+|     goods_name     |  string  | null: false |
+|       price        | integer  | null: false |
+|   prefecture_id    | integer  | null: false |
 |      explain       |   text   | null: false |
 |     category_id    | integer  | null: false |
 |    condition_id    | integer  | null: false |
-|       image        |  string  | null: false |
+|    delivery_fee    | integer  | null: false |
+|  date_of_shipping  |   date   | null: false |
+
 
 
 ### Association
@@ -65,12 +68,7 @@ Things you may want to cover:
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
 |       user         |references| null: false,foreign_key: true |
-|     postcode       | integer  | null: false |
-|    prefecture_id   | integer  | null: false |
-|       city         | string   | null: false |
-|      street        | string   | null: false |
-|    building name   | string   | null: false |
-|    phone number    | integer  | null: false |
+|    goods_name      |references| null: false,foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -81,13 +79,14 @@ Things you may want to cover:
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
 |       user         |references| null: false,foreign_key: true |
-|    delivery fee    |  integer | null: false |
-|     prefecture     |  string  | null: false |
+|   purchased_stuff  |references| null: false,foreign_key: true |
+|     purchaser      |references| null: false,foreign_key: true |
+|     post_code      | string   | null: false |
+|    prefecture_id   | integer  | null: false |
 |       city         | string   | null: false |
-|      street        | string   | null: false |
-|    building name   | string   | null: false |
-|    phone number    | integer  | null: false |
-|  date of shipping  |   date   | null: false |
+|   street_number    | string   | null: false |
+|    building_name   | string   |             |
+|    phone_number    | string   | null: false |
 
 ### Association
 - belongs_to :purchase
