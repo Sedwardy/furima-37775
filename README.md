@@ -54,8 +54,8 @@ Things you may want to cover:
 |      explain       |   text   | null: false |
 |     category_id    | integer  | null: false |
 |    condition_id    | integer  | null: false |
-|    delivery_fee    | integer  | null: false |
-|  date_of_shipping  |   date   | null: false |
+|  delivery_fee_id   | integer  | null: false |
+| date_of_shipping_id| integer  | null: false |
 
 
 
@@ -68,7 +68,7 @@ Things you may want to cover:
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
 |       user         |references| null: false,foreign_key: true |
-|    goods_name      |references| null: false,foreign_key: true |
+|    merchandise     |references| null: false,foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -79,7 +79,6 @@ Things you may want to cover:
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
 |       user         |references| null: false,foreign_key: true |
-|   purchased_stuff  |references| null: false,foreign_key: true |
 |     purchaser      |references| null: false,foreign_key: true |
 |     post_code      | string   | null: false |
 |    prefecture_id   | integer  | null: false |
