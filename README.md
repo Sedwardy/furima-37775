@@ -34,21 +34,23 @@ Things you may want to cover:
 |      email         |  string  | null: false,unique:true |
 | encrypted_password |  string  | null: false |
 |      profile       |   text   | null: false |
-|      email         |   text   | null: false |
-| encrypted_password |   text   | null: false |
+|   date of birth    |   date   | null: false |
 
 ### Association
-- has_many :merchandise
-- has many :purchase
+- has_many :merchandises
+- has many :purchases
 
 
 ## Merchandiseテーブル
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
-|      user_id       |references| null: false,foreign_key: true |
-|     goods_name     |  string  | null: false |
-|       price        |  string  | null: false |
+|      user          |references| null: false,foreign_key: true |
+|     goods_name     |  string  | null: false,foreign_key: true |
+|       price        |  string  | null: false,foreign_key: true |
 |     exhibitor      |  string  | null: false |
+|      explain       |   text   | null: false |
+|      category      |  string  | null: false |
+|      condition     |  string  | null: false |
 
 ### Association
 - belongs_to :user
@@ -58,19 +60,21 @@ Things you may want to cover:
 ## Purchaseテーブル
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
-|      user_id       |references| null: false,foreign_key: true |
-|       bought       |  string  | null: false |
+|      user          |references| null: false,foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :merchandise
-- has_many :address
+- has_one :address
 
 ## Addressテーブル
 |      Column        |   Type   |   Options   |
 |--------------------|----------|-------------|
-|       user_id      |references| null: false,foreign_key: true |
+|       user         |references| null: false,foreign_key: true |
 |       place        |  string  | null: false |
+|    delivery fee    |  integer | null: false |
+|     prefecture     |  string  | null: false |
+|  date of shipping  |   date   | null: false |
 
 ### Association
 - belongs_to :purchase
