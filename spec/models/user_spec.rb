@@ -104,6 +104,30 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Hurigana first name is invalid")
       end
+
+      it 'last_nameが空では登録できない' do
+        @user.last_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it 'first_nameが空では登録できない' do
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+
+      it 'hurigana_last_nameが空では登録できない' do
+        @user.hurigana_last_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Hurigana last name can't be blank")
+      end
+
+      it 'hurigana_first_nameが空では登録できない' do
+        @user.hurigana_first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Hurigana first name can't be blank")
+      end
     end
   end
 end
