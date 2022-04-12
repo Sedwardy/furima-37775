@@ -1,15 +1,14 @@
-class ItemsController < ApplicationController
-
+class MerchandisesController < ApplicationController
   def index
   end
 
   def new
-    @item = Item.new
+    @merchandise = Merchandise.new
   end
 
   def create
-    @item =Item.new(item_params)
-    if @item.save
+    @merchandise =Merchandise.new(merchandise_params)
+    if @merchandise.save
       redirect_to root_path
     else
       render :edit
@@ -27,5 +26,4 @@ class ItemsController < ApplicationController
   
   def destroy
   end
-
 end
