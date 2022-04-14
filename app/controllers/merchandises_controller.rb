@@ -1,5 +1,5 @@
 class MerchandisesController < ApplicationController
-  before_action :set_merchandise, except: [:index, :new, :create]
+  #before_action :set_merchandise, except: [:index, :new, :create]
   before_action :authenticate_user!, except: :index
   #編集機能実装時、before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
@@ -15,7 +15,7 @@ class MerchandisesController < ApplicationController
     if @merchandise.save
       redirect_to root_path
     else
-      render :edit
+      render :new
     end
   end
 
