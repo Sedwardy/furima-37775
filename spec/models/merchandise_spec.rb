@@ -13,6 +13,18 @@ RSpec.describe Merchandise, type: :model do
     end
 
     context '出品できない場合' do
+      it 'userが紐づいていなければ出品できない' do
+        @merchandise.user = nil
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("User must exist")
+      end
+
+      it '商品画像が空では登録できない' do
+        @merchandise.image = nil
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Image can't be blank")
+      end
+
       it '商品名が空では登録できない' do
         @merchandise.goods_name = ''
         @merchandise.valid?
@@ -65,6 +77,48 @@ RSpec.describe Merchandise, type: :model do
         @merchandise.price = "ああああああ"
         @merchandise.valid?
         expect(@merchandise.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'カテゴリーに「---」が選択されている場合は出品できない' do
+        @merchandise.category_id = 1
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Category must be other than 1")
+      end
+
+      it '商品の状態に「---」が選択されている場合は出品できない' do
+        @merchandise.condition_id = 1
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Condition must be other than 1")
+      end
+
+      it '配送料の負担に「---」が選択されている場合は出品できない' do
+        @merchandise.delivery_fee_id = 1
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Delivery fee must be other than 1")
+      end
+
+      it '発送元の地域に「---」が選択されている場合は出品できない' do
+        @merchandise.prefecture_id = 1
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Prefecture must be other than 1")
+      end
+
+      it '発送までの日数に「---」が選択されている場合は出品できない' do
+        @merchandise.date_of_shipping_id = 1
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Date of shipping must be other than 1")
+      end
+
+      it '価格が300円未満では出品できない' do
+        @merchandise.price = 299
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+
+      it '価格が9_999_999円を超えると出品できない' do
+        @merchandise.price = 10_000_000
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
 
     end
