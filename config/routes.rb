@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'merchandises/index'
   root to: "merchandises#index"
-  resources :merchandises, only: [:new, :create,]
+  resources :merchandises, only: [:index, :new, :create,]
   
 end
