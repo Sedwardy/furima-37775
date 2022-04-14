@@ -25,13 +25,43 @@ RSpec.describe Merchandise, type: :model do
         expect(@merchandise.errors.full_messages).to include("Explain can't be blank")
       end
 
+      it 'カテゴリーが空では登録できない' do
+        @merchandise.category_id = ''
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Category is not a number")
+      end
+
+      it '商品の状態が空では登録できない' do
+        @merchandise.condition_id = ''
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Condition is not a number")
+      end
+
+      it '配送料の負担が空では登録できない' do
+        @merchandise.delivery_fee_id = ''
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Delivery fee is not a number")
+      end
+
+      it '発送元の地域が空では登録できない' do
+        @merchandise.prefecture_id = ''
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Prefecture is not a number")
+      end
+
+      it '発送までの日数が空では登録できない' do
+        @merchandise.date_of_shipping_id = ''
+        @merchandise.valid?
+        expect(@merchandise.errors.full_messages).to include("Date of shipping is not a number")
+      end
+
       it '価格が空では登録できない' do
         @merchandise.price = ''
         @merchandise.valid?
         expect(@merchandise.errors.full_messages).to include("Price can't be blank")
       end
 
-      it '価格が数字でないと登録できない' do
+      it '価格が半角でないと登録できない' do
         @merchandise.price = "ああああああ"
         @merchandise.valid?
         expect(@merchandise.errors.full_messages).to include("Price is not a number")

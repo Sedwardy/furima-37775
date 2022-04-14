@@ -11,12 +11,12 @@ class Merchandise < ApplicationRecord
   #購入機能実装時 has_one :purchase
   has_one_attached :image
 
-  validates :goods_name,          null: false 
+  validates :goods_name,          null: false
 
   validates :price,               null: false, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
                                   presence: { message: "can't be blank"}
   validates :prefecture_id,       null: false 
-  validates :explain,             null: false 
+  validates :explain,             null: false
   validates :category_id,         null: false 
   validates :condition_id,        null: false 
   validates :delivery_fee_id,     null: false 
