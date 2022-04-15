@@ -1,5 +1,5 @@
 class MerchandisesController < ApplicationController
-  #before_action :set_merchandise, except: [:index, :new, :create]
+  before_action :set_merchandise, except: [:index, :new, :create]
   before_action :authenticate_user!, except: :index
   #編集機能実装時、before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
@@ -20,8 +20,8 @@ class MerchandisesController < ApplicationController
     end
   end
 
-  #def show
-  #end
+  def show
+  end
 
   #def edit
   #end
@@ -39,9 +39,9 @@ class MerchandisesController < ApplicationController
   end
 
   #商品詳細機能以降実装する内容
-  #def set_merchandise
-    #@merchandise = Merchandise.find(params[:id])
-  #end
+  def set_merchandise
+    @merchandise = Merchandise.find(params[:id])
+  end
 
   
   #def contributor_confirmation
