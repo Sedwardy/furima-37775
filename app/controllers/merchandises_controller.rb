@@ -5,6 +5,7 @@ class MerchandisesController < ApplicationController
   
   def index
     @merchandises = Merchandise.all
+    @merchandises = Merchandise.order(id: :DESC)
   end
 
   def new
