@@ -1,6 +1,6 @@
 class MerchandisesController < ApplicationController
   before_action :set_merchandise, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
   #編集機能実装時、before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
   def index
