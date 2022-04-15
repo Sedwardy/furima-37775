@@ -4,6 +4,7 @@ class MerchandisesController < ApplicationController
   #編集機能実装時、before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
   def index
+    @merchandises = Merchandise.order(id: :DESC)
   end
 
   def new
