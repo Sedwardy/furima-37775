@@ -1,7 +1,7 @@
 class MerchandisesController < ApplicationController
   before_action :set_merchandise, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :contributor_confirmation, only: [:edit, :update] #:destroy
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
   def index
     @merchandises = Merchandise.order(id: :DESC)
@@ -33,8 +33,10 @@ class MerchandisesController < ApplicationController
     end
   end
   
-  #def destroy
-  #end
+  def destroy
+    @merchandise = Merchandise.find(params[:id])
+    redirect_to root_path
+  end
 
   private
 
