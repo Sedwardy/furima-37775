@@ -34,11 +34,11 @@ class MerchandisesController < ApplicationController
   end
   
   def destroy
-    if @merchandise.user
+    if current_user == @merchandise.user
     @merchandise.destroy
-    redirect_to root_path
     else
     end
+    redirect_to root_path
   end
 
   private
