@@ -27,7 +27,6 @@ class MerchandisesController < ApplicationController
   end
 
   def update
-    @merchandise = Merchandise.find(params[:id]) 
     if @merchandise.update(merchandise_params)
     else
       render :edit
