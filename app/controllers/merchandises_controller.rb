@@ -34,9 +34,11 @@ class MerchandisesController < ApplicationController
   end
   
   def destroy
-    @merchandise = Merchandise.find(params[:id])
+    if @merchandise.user
     @merchandise.destroy
     redirect_to root_path
+    else
+    end
   end
 
   private
