@@ -35,6 +35,7 @@ class MerchandisesController < ApplicationController
   
   def destroy
     @merchandise = Merchandise.find(params[:id])
+    @merchandise.destroy
     redirect_to root_path
   end
 
