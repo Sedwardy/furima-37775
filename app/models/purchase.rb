@@ -4,6 +4,6 @@ class Purchase < ApplicationRecord
   belongs_to :merchandise
   has_one    :address
   
-  validates :merchandise, null: false
+  #フォームオブジェクトに記入したのでvalidates :merchandise, null: falseは削除して良い
 
 end

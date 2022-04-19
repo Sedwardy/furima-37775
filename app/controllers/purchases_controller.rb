@@ -2,8 +2,17 @@ class PurchasesController < ApplicationController
   before_action :set_merchandise
 
   def index
-    @purchase = Purchase.includes(:merchandise)
-    
+    @purchase_address = PurchaseAddress.new
+  end
+
+  def create
+    @purchase_address = PurchaseAddress.new(purchase_params)
+    if @purchase_address.valid?
+      @purchase_address.save
+      redirect_to root_path
+    else
+      render :index
+    end
   end
 
   private
@@ -12,7 +21,7 @@ class PurchasesController < ApplicationController
     @merchandise = Merchandise.find(params[:merchandise_id])
   end
 
-  def merchandise_params
-    params.require(:merchandise).permit(:goods_name, :price, :prefecture_id, :explain, :category_id, :condition_id, :delivery_fee_id, :date_of_shipping_id, :image).merge(user_id: current_user.id)
+  def purchase_params
+    params.require(:purchase_address).permit(:post_code, :prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 end
