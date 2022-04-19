@@ -36,7 +36,6 @@ class MerchandisesController < ApplicationController
   def destroy
     if current_user == @merchandise.user
     @merchandise.destroy
-    else
     end
     redirect_to root_path
   end

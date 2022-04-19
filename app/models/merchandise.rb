@@ -8,7 +8,7 @@ class Merchandise < ApplicationRecord
   belongs_to :prefecture
 
   belongs_to :user
-  #購入機能実装時 has_one :purchase
+  has_one    :purchase
   has_one_attached :image
 
   validates :goods_name,          null: false
