@@ -11,7 +11,7 @@ class PurchaseAddress
   validates :street_number, presence: true           
   validates :phone_number,  presence: true 
   validates :merchandise,   presence: true
-
+  validates :token,         presence: true
 
 
   def save
