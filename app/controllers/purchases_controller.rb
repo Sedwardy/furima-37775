@@ -23,20 +23,15 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.require(:purchase_address).permit(:post_code, :prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id)
-  end
-
-  def purchase_params
-    params.require(:purchase).permit(:card_number, :month, :year, :security_code).merge(token: params[:token])
+    params.require(:purchase_address).permit(:post_code, :prefecture_id, :city, :street_number, :building_name, :phone_number, :purchase_id).merge(user_id: current_user.id, token: params[:token], merchandise_id: params[:merchandise_id])
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
     Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
+      amount: @merchandise.price,  # 商品の値段
+      card: purchase_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
-
 end

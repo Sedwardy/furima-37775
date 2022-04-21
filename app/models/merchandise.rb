@@ -13,7 +13,7 @@ class Merchandise < ApplicationRecord
 
   validates :goods_name,          null: false
 
-  validates :price,               null: false, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+  validates :price,               presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
                                   presence: { message: "can't be blank"}
   validates :prefecture_id,       null: false 
   validates :explain,             null: false
