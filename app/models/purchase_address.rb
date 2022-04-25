@@ -3,15 +3,16 @@ class PurchaseAddress
   include ActiveModel::Model
   attr_accessor  :merchandise_id, :post_code, :prefecture_id, :city, :street_number, :building_name, :phone_number, :user_id, :token
 
-  
-  validates :post_code,format: { with: /\A\d{3}-\d{4}\z/ },  presence: true
-  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
-  validates :city,          presence: true
-  validates :street_number, presence: true           
-  validates :phone_number,  presence: true, format: { with: /\A[\d]{10,11}\z/ }
-  validates :merchandise_id,presence: true
-  validates :token,         presence: true
-  validates :user_id,       presence: true
+  with_options presence: true do
+    validates :post_code,format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :city          
+    validates :street_number           
+    validates :phone_number, format: { with: /\A[\d]{10,11}\z/ }
+    validates :merchandise_id
+    validates :token
+    validates :user_id
+  end
 
   def save
     purchase = Purchase.create(merchandise_id: merchandise_id, user_id: user_id, token: token)
