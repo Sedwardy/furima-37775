@@ -24,6 +24,9 @@ class MerchandisesController < ApplicationController
   end
 
   def edit
+    if @merchandise.purchase != nil
+      redirect_to root_path
+    end
   end
 
   def update
