@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_merchandise
+  before_action :prevent_url
   
 
   def index
@@ -37,5 +38,11 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def prevent_url
+    if @merchandise.purchase != nil
+      redirect_to root_path
+    end
   end
 end
