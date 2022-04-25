@@ -10,9 +10,12 @@ RSpec.describe PurchaseAddress, type: :model do
 
   describe '購入' do
     context 'できる場合' do
-      it "UserとMerchandiseがあれば保存ができること" do
+      it "必要な情報が揃っていれば保存ができること" do
         expect(@purchase_address).to be_valid
       end 
+      it "建物名が空でも購入できる" do
+        expect(@purchase_address).to be_valid
+      end
     end 
 
     context 'できない場合' do
@@ -69,6 +72,38 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
+
+      it "郵便番号が半角ハイフンを含む形でなければ購入できない" do
+        @purchase_address.post_code = "4242424"
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Post code is invalid")
+      end
+
+      it "都道府県に「---」が選択されている場合は購入できない" do
+        @purchase_address.prefecture_id = 1
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Prefecture must be other than 1")
+      end
+
+      it "電話番号が9桁以下では購入できない" do
+        @purchase_address.phone_number = 90
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "電話番号が12桁以上では購入できない" do
+        @purchase_address.phone_number = 8042429292420
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
+      it "電話番号に半角数字以外が含まれている場合は購入できない" do
+        @purchase_address.phone_number ="0904242aaaa"
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Phone number is invalid")
+      end
+
+
     end
   end
 end
