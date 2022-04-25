@@ -1,8 +1,12 @@
 class PurchasesController < ApplicationController
   before_action :set_merchandise
+  
 
   def index
     @purchase_address = PurchaseAddress.new
+    if current_user.id == @merchandise.user.id
+      redirect_to root_path
+    end
   end
 
   def create
