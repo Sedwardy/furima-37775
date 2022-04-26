@@ -59,3 +59,4 @@ class MerchandisesController < ApplicationController
     redirect_to root_path unless current_user == @merchandise.user
   end
 end
+
