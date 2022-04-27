@@ -3,6 +3,7 @@ class MerchandisesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
   
+  
   def index
     @merchandises = Merchandise.order(id: :DESC)
   end
@@ -31,7 +32,7 @@ class MerchandisesController < ApplicationController
 
   def update
     if @merchandise.update(merchandise_params)
-      redirect_to root_path
+      redirect_to merchandise_path
     else
       render :edit
     end

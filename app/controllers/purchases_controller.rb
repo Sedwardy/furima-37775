@@ -1,7 +1,8 @@
 class PurchasesController < ApplicationController
   before_action :set_merchandise
+  before_action :prevent_sold_out 
+  before_action :authenticate_user!, only: :index
   before_action :prevent_url
-  before_action :authenticate_user!
 
   def index
     @purchase_address = PurchaseAddress.new
@@ -40,8 +41,14 @@ class PurchasesController < ApplicationController
     )
   end
 
-  def prevent_url
+  def prevent_sold_out
     if @merchandise.purchase != nil
+      redirect_to root_path
+    end
+  end
+
+  def prevent_url
+    if @merchandise.user_id == current_user.id
       redirect_to root_path
     end
   end
