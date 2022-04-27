@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :purchases
 
   validates :nickname,            presence: true
-  validates :last_name,          format: { with: /\A[一-龥]+\z/ }, presence: true
-  validates :first_name,         format: { with: /\A[一-龥]+\z/ }, presence: true
+  validates :last_name,          format: { with: /\A[ぁ-んァ-ン一-龥]/ }, presence: true
+  validates :first_name,         format: { with: /\A[ぁ-んァ-ン一-龥]/ }, presence: true
   validates :hurigana_last_name, format: { with: /\A[ァ-ヶー－]+\z/ }, presence: true
   validates :hurigana_first_name, format: { with: /\A[ァ-ヶー－]+\z/ }, presence: true
   validates :date_of_birth,       presence: true
