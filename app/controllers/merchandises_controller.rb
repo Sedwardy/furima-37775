@@ -31,6 +31,7 @@ class MerchandisesController < ApplicationController
 
   def update
     if @merchandise.update(merchandise_params)
+      redirect_to root_path
     else
       render :edit
     end
